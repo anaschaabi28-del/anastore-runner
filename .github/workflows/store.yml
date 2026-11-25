@@ -8,7 +8,7 @@ permissions:
   contents: read
 concurrency:
   group: anastore
-  cancel-in-progress: true
+  cancel-in-progress: false
 jobs:
   store:
     runs-on: ubuntu-latest
@@ -25,7 +25,6 @@ jobs:
         env:
           ANASTORE_TOKEN: ${{ secrets.ANASTORE_TOKEN }}
         run: |
-          sleep 25
           python3 bot.py --cycle
       - name: Save state back to vault
         env:
